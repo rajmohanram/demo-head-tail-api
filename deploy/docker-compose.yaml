@@ -1,0 +1,32 @@
+version: "3"
+services:
+
+  head:
+    container_name: head
+    hostname: head
+    image: rajmor/demo-head-api:v0.1
+    restart: always
+    environment:
+      delay_ms: 600
+      tail_api_url: 'http://tail:8001/api/data'
+    ports:
+      - "8000:8000"
+    networks:
+      - dockerNet
+
+  tail:
+    container_name: tail
+    hostname: head
+    image: rajmor/demo-tail-api:v0.1
+    restart: always
+    environment:
+      delay_ms: 400
+    ports:
+      - "8001:8001"
+    networks:
+      - dockerNet
+
+networks:
+  dockerNet:
+    external: true
+    name: dockerNet
