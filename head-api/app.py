@@ -11,6 +11,7 @@ delay_sec = int(delay_ms) / 1000
 tail_api_url = os.environ.get('TAIL_URL', default='http://tail:8001/api/data')
 print(tail_api_url)
 
+
 @app.route('/api/data')
 def get_data():
     sleep(delay_sec)
